@@ -24,18 +24,19 @@ function AuthForm({ type }: Props) {
 
   const handleSubmit = (formData: FormData) => {
     startTransition(async () => {
-      // const email = formData.get("email") as string;
-      // const password = formData.get("password") as string;
+      const email = formData.get("email") as string;
+      const password = formData.get("password") as string;
 
       let errorMessage;
       if (isLoginForm) {
-        // errorMessage = (await loginAction(email, password)).errorMessage;
+        errorMessage = (await loginAction(email, password)).errorMessage;
       } else {
-        // errorMessage = (await signUpAction(email, password)).errorMessage;
+        errorMessage = (await signUpAction(email, password)).errorMessage;
       }
 
       if (!errorMessage) {
-        router.replace(`/?toastType=${type}`);
+        // router.replace(`/?toastType=${type}`);
+        router.replace("/");
       } else {
         toast(
           <div>
