@@ -10,6 +10,7 @@ import { Loader2 } from "lucide-react";
 import Link from "next/link";
 // import { loginAction, signUpAction } from "@/actions/users";
 import { toast } from "sonner";
+import { loginUserAction, signUpUserAction } from "@/actions/users";
 
 type Props = {
   type: "login" | "SignUp";
@@ -29,9 +30,9 @@ function AuthForm({ type }: Props) {
 
       let errorMessage;
       if (isLoginForm) {
-        errorMessage = (await loginAction(email, password)).errorMessage;
+        errorMessage = (await loginUserAction(email, password)).errorMessage;
       } else {
-        errorMessage = (await signUpAction(email, password)).errorMessage;
+        errorMessage = (await signUpUserAction(email, password)).errorMessage;
       }
 
       if (!errorMessage) {
